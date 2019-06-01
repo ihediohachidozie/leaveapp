@@ -11,6 +11,15 @@
     @endif 
     <div class="row">
         @include('leave.empdetail')
+        
+                <a href="{{asset('leave/history')}}" class="btn btn-outline-success">Go Back</a>
+            </div>
+
+            <div class="card-footer text-muted">
+                <p></p>
+            </div>
+        </div>
+        </div>
         <div class="col-sm-6">
             <div class="card">
                 <div class="card-header">
@@ -22,6 +31,7 @@
                         @method('PATCH')
 
                         <input type="hidden" name="olddays" value="{{$leave->days}}">
+                        <input type="hidden" name="oldstartdate" value="{{$leave->startdate}}">
 
                         <button type="submit" class="btn btn-primary btn-lg">Modify</button>                         
                     </form>

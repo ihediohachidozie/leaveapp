@@ -12,6 +12,15 @@
 
     <div class="row">
         @include('leave.empdetail')
+        
+                <a href="{{asset('leaves/')}}" class="btn btn-outline-success">Go Back</a>
+            </div>
+
+            <div class="card-footer text-muted">
+                <p></p>
+            </div>
+        </div>
+        </div>
         <div class="col-sm-6">
             <div class="card">
                 <div class="card-header">

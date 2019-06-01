@@ -50,7 +50,7 @@
                     <option value="">Choose...</option>
                     @foreach ($employees as $employee)
                         @if ($emp->id != $employee->id)
-                            <option value="{{$employee->id}}" {{$leave->dutyreliever == $employee->id ? 'selected' : ''}}>{{$employee->firstname}} {{ ' '}} {{$employee->lastname}}</option>
+                            <option value="{{$employee->staffid}}" {{$leave->dutyreliever == $employee->staffid ? 'selected' : ''}}>{{$employee->firstname}} {{ ' '}} {{$employee->lastname}}</option>
                         @endif
                         
                     @endforeach

@@ -109,7 +109,7 @@ class LeaveController extends Controller
 
         $emp = Employee::find($leave->employee_id);
 
-        $staffleave = $this->leavegroupedbyyear($id);
+        $staffleave = $this->leavegroupedbyyear($leave->employee_id);
 
         return view('leave.edit', compact('employees', 'leave', 'emp', 'staffleave'));
     }
@@ -123,9 +123,8 @@ class LeaveController extends Controller
      */
     public function update(Request $request, $id)
     {
-        if($this->sameleavedate($request->employee_id, $request->startdate) == 1)
+        if($request->startdate == $request->oldstartdate)
         {
-
             if($this->outstandingleavedays4edit($request->employee_id, $request->leaveyear, $request->days, $request->olddays))
             {
                 $leave = Leave::find($id);
@@ -137,10 +136,28 @@ class LeaveController extends Controller
             else{
                 return back()->withStatus(__('You have exceed approved leave days!'));
             }
+        }else
+        {
+            if($this->sameleavedate($request->employee_id, $request->startdate) == 0)
+            {
+    
+                if($this->outstandingleavedays4edit($request->employee_id, $request->leaveyear, $request->days, $request->olddays))
+                {
+                    $leave = Leave::find($id);
+    
+                    $leave->update($this->validatedData());
+                    
+                    return redirect('leave/history')->withStatus('Leave Application is successfully updated');  
+                }
+                else{
+                    return back()->withStatus(__('You have exceed approved leave days!'));
+                }
+            }
+            else{
+                return back()->withStatus(__('Entry already exist!'));
+            }
         }
-        else{
-            return back()->withStatus(__('Entry already exist!'));
-        }
+
     }
 
     /**
