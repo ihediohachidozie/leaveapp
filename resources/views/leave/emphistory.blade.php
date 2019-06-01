@@ -19,20 +19,21 @@
                 </div>
                         
             </div>
-            <div class="card-body">
-                @if (count($leaves) > 0)      
-                    <table class="table table-striped ">
-                        <thead>
-                            <tr>
-                                <th>Start Date</th>
-                                <th>Days</th>
-                                <th>Leave Type</th>
-                                <th>Leave Year</th>
-                                <th>Duty Reliever</th>
-                                <th colspan="2" style="text-align: center;">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
+            <div class="card-body table-responsive">
+                <table class="table table-striped ">
+                    <thead>
+                        <tr>
+                            <th>Start Date</th>
+                            <th>Days</th>
+                            <th>Leave Type</th>
+                            <th>Leave Year</th>
+                            <th>Duty Reliever</th>
+                            <th colspan="2" style="text-align: center;">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (count($leaves) > 0)      
+
                             @foreach($leaves as $leave)
                                 <tr>
                                     <td>{{$leave->startdate}}</td>
@@ -52,12 +53,10 @@
                                     </td>
                                 </tr>
                             @endforeach
-                        </tbody>
-                    </table>
-                    {{ $leaves->render() }}
-                @else
-                    <strong>no leave history record found!</strong>
-                @endif
+                        @endif
+                    </tbody>
+                </table>
+                {{ $leaves->render() }}
             </div>
         </div>
         <div class="card-body">

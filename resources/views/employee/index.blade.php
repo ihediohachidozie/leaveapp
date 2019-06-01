@@ -19,7 +19,7 @@
         <a href="{{ route('employees.create') }}" class="btn btn-primary btn-sm">Add</a>
         <a href="{{asset('/home')}}" class="btn btn-outline-success btn-sm float-right">Back</a>
     </div>
-    <div class="card-body">
+    <div class="card-body table-responsive">
         <table class="table table-striped">
             <thead>
                 <tr>
