@@ -29,6 +29,7 @@
                                 <th>Leave Type</th>
                                 <th>Leave Year</th>
                                 <th>Duty Reliever</th>
+                                <th colspan="2" style="text-align: center;">Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -39,6 +40,16 @@
                                     <td>{{$leave->leavetype}}</td>
                                     <td>{{$leave->leaveyear}}</td>
                                     <td>{{$leave->dutyreliever}}</td>
+                                    <td class="text-center"><a href="{{ route('leaves.edit', $leave->id) }}"><i class="fa fa-edit" style="font-size:36px"></i></a></td>
+                                    <td class="text-center">
+                                        <form action="{{ route('leaves.destroy', $leave->id)}}" method="post">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" disabled>
+                                                <i class="fa fa-remove" style="color:red"></i>
+                                            </button>
+                                        </form>                                
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>
