@@ -231,10 +231,11 @@ class LeaveController extends Controller
     public function emphistory($id)
     {
         $emp = Employee::find($id);
+        $employees = Employee::all();
 
         $leaves = Db::table('leaves')->where('employee_id', $id)->orderBy('leaveyear')->paginate(10);
         
-        return view('leave.emphistory', compact('leaves', 'emp'));
+        return view('leave.emphistory', compact('leaves', 'emp', 'employees'));
  
     }
 
@@ -252,7 +253,9 @@ class LeaveController extends Controller
     {
         $leaves = Leave::paginate(10);
 
-        return view('leave/history', compact('leaves'));
+        $employees = Employee::all();
+
+        return view('leave/history', compact('leaves', 'employees'));
     }
 
     private function outstandingleavedays4edit($id, $year, $lday, $oldday)

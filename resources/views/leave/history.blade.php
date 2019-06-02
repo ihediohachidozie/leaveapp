@@ -24,6 +24,7 @@
                     <tr>
                         {{--  <th>S/N</th> --}}
                         <th>Staff ID</th>
+                        <th>Name</th>
                         <th>Start Date</th>
                         <th>Days</th>
                         <th>Leave Type</th>
@@ -40,11 +41,19 @@
                             <tr>
                                {{--  <td>{{++$i}}</td> --}}
                                 <td>{{$leave->employee->staffid}}</td>
+                                <td>{{$leave->employee->firstname}}</td>
                                 <td>{{$leave->startdate}}</td>
                                 <td>{{$leave->days}}</td>
                                 <td>{{$leave->leavetype}}</td>
                                 <td>{{$leave->leaveyear}}</td>
-                                <td>{{$leave->dutyreliever}}</td>
+                                <td>
+                                    @foreach ($employees as $employee)
+                                        @if ($employee->staffid == $leave->dutyreliever)
+                                            {{$employee->firstname}}
+                                        @endif
+                                    @endforeach
+                                    
+                                </td>
                                 
                                 <td class="text-center"><a href="{{ route('leaves.edit', $leave->id) }}"><i class="fa fa-edit" style="font-size:36px"></i></a></td>
                                 <td class="text-center">
