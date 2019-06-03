@@ -20,6 +20,7 @@ Route::resource('category', 'CategoryController');
 Route::resource('employees', 'EmployeeController');
 Route::resource('leaves', 'LeaveController');
 Route::resource('users', 'UserController');
+//Route::patch('users/{user}', 'UserController');
 
 Route::get('leave/history', 'LeaveController@allhistory')->name('leaves.allhistory');
 Route::get('leave/emphistory/{id}', 'LeaveController@emphistory')->name('leaves.emphistory');

@@ -30,6 +30,7 @@
                         <th>User Name</th>
                         <th class="text-center">Activate</th>
                         <th class="text-center">De-activate</th>
+                        <th class="text-center">Reset Password</th>
                      </tr>
                 </thead>
                 <tbody>
@@ -41,6 +42,7 @@
                                     <form action="{{ route('users.update', ['user'=>$user]) }}" method="post">
                                         @csrf
                                         @method('PATCH')
+                                        
                                         <input type="hidden" name="active" value="1">
                                         <button type="submit" {{$user->active == 1 ? 'disabled' : ''}}>
                                             <i class="fa fa-user" style="color:blue"></i>
@@ -49,12 +51,24 @@
                                 </td>
                                 <td class="text-center">
                                     <form action="{{ route('users.update', ['user'=>$user]) }}" method="post">
-                                    @csrf
-                                    @method('PUT')
-                                    <input type="hidden" name="active" value="0">
-                                    <button type="submit" {{$user->active == 0 ? 'disabled' : ''}}>
-                                        <i class="fa fa-user-o" style="color:red"></i>
-                                    </button>
+                                        @csrf
+                                        @method('PUT')
+                                        
+                                        <input type="hidden" name="active" value="0">
+                                        <button type="submit" {{$user->active == 0 ? 'disabled' : ''}}>
+                                            <i class="fa fa-user-o" style="color:red"></i>
+                                        </button>
+                                    </form>
+                                </td>
+                                <td class="text-center">
+                                    <form action="{{ route('users.update', ['user'=>$user]) }}" method="post">
+                                        @csrf
+                                        @method('PUT')
+                                        
+                                        <input type="hidden" name="password" value="password">
+                                        <button type="submit">
+                                            <i class="fa fa-cogs" style="color:green"></i>
+                                        </button>
                                     </form>
                                 </td>
                             </tr>
