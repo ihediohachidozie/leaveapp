@@ -125,8 +125,16 @@ class EmployeeController extends Controller
      */
     public function destroy(Employee $employee)
     {
-        $employee->delete();
+        if($employee->leaves->count() == 0)
+        {
+            $employee->delete();
+            $msg = 'employee successfully deleted!';
+        }
+        else{
+            $msg = 'employee is has leave application entries!';
+        }
+        
 
-        return redirect('employee')->withStatus(__('employee successfully deleted!'));
-    }
+        return redirect('employees')->withStatus(__($msg));
+    } 
 }

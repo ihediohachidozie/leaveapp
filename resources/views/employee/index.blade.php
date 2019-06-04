@@ -43,7 +43,7 @@
                                 <form action="{{ route('employees.destroy', ['employee' => $employee ]) }}" method="post">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" disabled>
+                                    <button type="submit" {{ auth()->id() != 1 ? 'disabled' : ''}}>
                                         <i class="fa fa-remove" style="color:red"></i>
                                     </button>
                                 </form>

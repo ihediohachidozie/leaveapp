@@ -111,7 +111,12 @@ class UserController extends Controller
 
         }
         else
-        {         
+        {
+            $user->update(
+                $request->merge(['password' => Hash::make($request->get('password'))])
+                    ->except(['password_confirmation']          
+            ));
+
             return redirect('users')->withStatus(__('User password reset successfully to "password"'));
         }
                 

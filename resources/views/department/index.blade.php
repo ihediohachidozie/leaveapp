@@ -39,7 +39,7 @@
                                 <form action="{{ route('departments.destroy', ['department'=>$department]) }}" method="post">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit">
+                                <button type="submit" {{ auth()->id() != 1 ? 'disabled' : ''}}>
                                     <i class="fa fa-remove" style="font-size:24px;color:red; border:0px;"></i>
                                 </button>
                                 </form>
