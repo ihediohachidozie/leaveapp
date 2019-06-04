@@ -52,7 +52,7 @@
                                         <form action="{{ route('leaves.destroy', $leave->id)}}" method="post">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" disabled>
+                                            <button type="submit" {{ auth()->id() != 1 ? 'disabled' : ''}}>
                                                 <i class="fa fa-remove" style="color:red"></i>
                                             </button>
                                         </form>                                

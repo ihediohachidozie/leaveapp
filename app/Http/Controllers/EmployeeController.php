@@ -65,7 +65,7 @@ class EmployeeController extends Controller
             'lastname' => 'required|max:25',
             'department_id' => 'required',
             'category_id' => 'required',
-            'staffid' => 'required|numeric|unique:employees',
+            'staffid' => 'required|numeric|unique:employees,employee_id',
             'user_id' => 'required',
             'phone' => 'sometimes',
             'emergencyaddress' => 'sometimes',

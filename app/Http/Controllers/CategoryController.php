@@ -105,8 +105,15 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         //
-        $category->delete();
-
-        return redirect('category')->withStatus(__('Category successfully deleted!'));
+        if($category->employees->count() == 0)
+        {
+            $category->delete();
+            $msg = 'Category successfully deleted!';
+        }
+        else{
+            $msg = 'Category is linked to employees!';
+        }
+       
+        return redirect('category')->withStatus(__($msg));
     }
 }
