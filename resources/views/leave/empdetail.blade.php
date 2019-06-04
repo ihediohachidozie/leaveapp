@@ -48,7 +48,7 @@
 
                         @endforeach
                     </table>
-                    <a href="{{asset('leaves')}}" class="btn btn-outline-success">Go Back</a>
+                    <a href="{{asset('leaves')}}" class="btn btn-outline-success">Back</a>
                 </div>
     
                 <div class="card-footer text-muted">

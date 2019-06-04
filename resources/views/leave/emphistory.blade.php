@@ -66,7 +66,7 @@
             </div>
         </div>
         <div class="card-body">
-            <a href="{{asset('leaves/')}}" class="btn btn-primary btn-sm">Go Back</a>
+            <a href="{{asset('leaves/')}}" class="btn btn-primary btn-sm">Back</a>
             <button class="btn btn-success btn-sm float-right" onclick="printContent('card')">Print</button>
         </div>
     </div>

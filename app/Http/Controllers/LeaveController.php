@@ -233,7 +233,7 @@ class LeaveController extends Controller
         $emp = Employee::find($id);
         $employees = Employee::all();
 
-        $leaves = Db::table('leaves')->where('employee_id', $id)->orderBy('leaveyear')->paginate(10);
+        $leaves = Db::table('leaves')->where('employee_id', $id)->orderBy('leaveyear', 'DESC')->paginate(10);
         
         return view('leave.emphistory', compact('leaves', 'emp', 'employees'));
  
@@ -251,7 +251,7 @@ class LeaveController extends Controller
 
     public function allhistory()
     {
-        $leaves = Leave::paginate(10);
+        $leaves = Leave::orderBy('id', 'DESC')->paginate(10);
 
         $employees = Employee::all();
 
