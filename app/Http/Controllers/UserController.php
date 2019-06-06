@@ -101,7 +101,8 @@ class UserController extends Controller
                         ->except(['password_confirmation']          
                 ));
 
-                return back()->withStatus(__('Password successfully changed'));
+               return redirect('/home')->withStatus(__('Password successfully changed'));
+               // return redirect('/home');
 
             }
             else
